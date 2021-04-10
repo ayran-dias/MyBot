@@ -20,3 +20,42 @@ client.connect() // This method return a 'promise'.
         console.log('Application started. Press Ctrl + c to stop.')
     })
     .catch(function(err) { /* Connection failed. */ });
+
+
+
+
+
+
+    client.addMessageReceiver(true, function(message) {
+        // Process received message
+      });
+
+
+
+
+      client.connect()
+    .then(function(session) {
+
+        
+        // After connection is possible send messages
+        var msg = {
+            type: "text/plain",
+            content: "Olá, espero que esteja tudo bem. Agora irei passar os repositórios da Take",           
+        };
+        client.sendMessage(msg);
+    });
+
+
+
+
+
+    client.connect()
+    .then(function(session) {
+        // Sending "received" notification
+        var notification = {
+            id: "ef16284d-09b2-4d91-8220-74008f3a5788",
+            to: "ayrandcm@hotmai.com",
+            event: Lime.NotificationEvent.RECEIVED
+        };
+        client.sendNotification(notification);
+    });
